@@ -2,14 +2,11 @@
 
 class Genre
 {
-    public $genre1;
-    public $genre2;
-    public $genre3;
+    public $genre;
 
-    public function __construct($_genre1, $_genre2, $_genre3)
+
+    public function __construct($_genre)
     {
-        $this->genre1 = $_genre1;
-        $this->genre2 = $_genre2;
-        $this->genre3 = $_genre3;
+        $this->genre = $_genre;
     }
 }

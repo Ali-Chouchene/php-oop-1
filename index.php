@@ -2,15 +2,16 @@
 include_once __DIR__ . '/Models/Movie.php';
 include_once __DIR__ . '/Models/Genre.php';
 
-$genres = new Genre('Action', 'Fantasy', 'Adventure');
-// var_dump($genres);
-// die;
-// $type2 = new GENRE('Fantasy');
-// $type3 = new GENRE('Adventure');
 
-$movie_1 = new MOVIE('Spider-Man', 3, 'https://d2iltjk184xms5.cloudfront.net/uploads/photo/file/451301/small_3e5efc1678b6cfeabdb5d32e4a394d30-Spider_20Man.jpg');
-$movie_2 = new MOVIE('Word War Z', 5, 'https://www.sentieridelcinema.it/wp-content/uploads/2016/03/DIDSTt02PCVuYXZlAT1Ue69ysicDGveOrmmB.jpg');
-$movie_3 = new MOVIE('Avatar', 5, 'https://i.ebayimg.com/images/g/JhMAAOSwh-1W1qTo/s-l500.jpg');
+$type1 = new Genre('Action');
+$type2 = new Genre('Fantasy');
+$type3 = new Genre('Adventure');
+
+$movie_1 = new MOVIE('Spider-Man', 3, 'https://d2iltjk184xms5.cloudfront.net/uploads/photo/file/451301/small_3e5efc1678b6cfeabdb5d32e4a394d30-Spider_20Man.jpg', $type1);
+$movie_2 = new MOVIE('Word War Z', 5, 'https://www.sentieridelcinema.it/wp-content/uploads/2016/03/DIDSTt02PCVuYXZlAT1Ue69ysicDGveOrmmB.jpg', $type3);
+$movie_3 = new MOVIE('Avatar', 5, 'https://i.ebayimg.com/images/g/JhMAAOSwh-1W1qTo/s-l500.jpg', $type2);
+
+$movies = [$movie_1, $movie_2, $movie_3];
 ?>
 
 
@@ -56,36 +57,18 @@ $movie_3 = new MOVIE('Avatar', 5, 'https://i.ebayimg.com/images/g/JhMAAOSwh-1W1q
     <main>
         <div class="container">
             <div class="row text-center row-cols-1 row-cols-md-3 py-5">
-                <div class="col">
-                    <div class="card mx-auto" style="width: 18rem;">
-                        <img src="<?= $movie_1->img ?>" class="card-img-top img-fluid" alt="<?= $movie_1->title ?>">
-                        <div class="card-body">
-                            <h3 class="card-title"><?= $movie_1->title ?></h3>
-                            <h6>Genere: <?= $movie_1->type ?></h6>
-                            <h4><?= $movie_1->rate ?><i class="fa-solid fa-star fa-gold fa-sm"></i></h4>
+                <?php foreach ($movies as $movie) : ?>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img src="<?= $movie->img ?>" class="card-img-top img-fluid" alt="<?= $movie_1->title ?>">
+                            <div class="card-body">
+                                <h3 class="card-title"><?= $movie->title ?></h3>
+                                <h6>Genere: <?= $movie->type->genre ?></h6>
+                                <h4><?= $movie->rate ?><i class="fa-solid fa-star fa-gold fa-sm"></i></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card mx-auto" style="width: 18rem;">
-                        <img src="<?= $movie_2->img ?>" class="card-img-top img-fluid " alt="<?= $movie_2->title ?>">
-                        <div class="card-body">
-                            <h3 class="card-title"><?= $movie_2->title ?></h3>
-                            <h6>Genere: <?= $movie_2->type ?></h6>
-                            <h4><?= $movie_2->rate ?><i class="fa-solid fa-star fa-gold fa-sm"></i></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mx-auto" style="width: 18rem;">
-                        <img src="<?= $movie_3->img ?>" class="card-img-top img-fluid grow-1" alt="<?= $movie_3->title ?>">
-                        <div class="card-body">
-                            <h3 class="card-title"><?= $movie_3->title ?></h3>
-                            <h6>Genere: <?= $movie_3->type ?></h6>
-                            <h4><?= $movie_3->rate ?><i class="fa-solid fa-star fa-gold fa-sm"></i></h4>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </main>

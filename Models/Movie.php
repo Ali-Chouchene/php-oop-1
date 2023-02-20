@@ -10,11 +10,11 @@ class Movie
 
 
 
-    public function __construct($_title, $_rate, $_img,  $genre = 'action')
+    public function __construct($_title, $_rate, $_img, Genre $_genre)
     {
         $this->title = $_title;
         $this->rate = $_rate;
         $this->img = $_img;
-        $this->type = $genre;
+        $this->type = $_genre;
     }
 }
